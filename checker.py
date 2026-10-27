@@ -236,7 +236,7 @@ URL: {car["url"]}
 Explică pe scurt verdictul în română. Pentru valori numerice necunoscute folosește 0.
 """
     response = client.models.generate_content(
-        model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash"),
+        model=os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",

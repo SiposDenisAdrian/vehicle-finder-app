@@ -35,7 +35,7 @@ jobs:
           LISTING_URLS: ${{ vars.LISTING_URLS }}
           MAX_LISTINGS: ${{ vars.MAX_LISTINGS }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: gemini-2.5-flash
+          GEMINI_MODEL: gemini-3.8-flash
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python checker.py
