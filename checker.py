@@ -20,8 +20,8 @@ DEFAULT_LISTING_URLS = (
     "https://www.dasweltauto.ro/s/vw",
     "https://www.dasweltauto.ro/s/audi",
 )
-DEFAULT_GEMINI_MODEL = "gemini-3.8-flash"
-FALLBACK_GEMINI_MODEL = "gemini-3.6-flash"
+DEFAULT_GEMINI_MODEL = "gemini-3.1-flash-lite"
+FALLBACK_GEMINI_MODEL = "gemini-3.5-flash-lite"
 LISTING_LINK_SELECTORS = {
     "autorulate.ro": 'a[href*="/auto/"]',
     "dasweltauto.ro": 'a[href*="/vehicle/"]',
