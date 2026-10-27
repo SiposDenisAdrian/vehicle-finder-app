@@ -26,6 +26,9 @@ Variables**, poți adăuga:
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_CHAT_ID`
 
+Dacă Gemini răspunde temporar cu HTTP 503, scriptul încearcă automat o dată
+modelul stabil de rezervă `gemini-3.6-flash`.
+
 Workflow-ul din `.github/workflows/scraper.yml` rulează la fiecare 6 ore
 (00:00, 06:00, 12:00 și 18:00 UTC), în fiecare zi, și poate fi pornit manual
 din fila **Actions**. Orele sunt în UTC; România este de obicei UTC+2 iarna și

@@ -8,6 +8,7 @@ from urllib.parse import parse_qs, urljoin, urlsplit, urlunsplit
 
 import requests
 from google import genai
+from google.genai import errors
 from google.genai import types
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
@@ -19,6 +20,8 @@ DEFAULT_LISTING_URLS = (
     "https://www.dasweltauto.ro/s/vw",
     "https://www.dasweltauto.ro/s/audi",
 )
+DEFAULT_GEMINI_MODEL = "gemini-3.8-flash"
+FALLBACK_GEMINI_MODEL = "gemini-3.6-flash"
 LISTING_LINK_SELECTORS = {
     "autorulate.ro": 'a[href*="/auto/"]',
     "dasweltauto.ro": 'a[href*="/vehicle/"]',
@@ -235,14 +238,29 @@ URL: {car["url"]}
 
 Explică pe scurt verdictul în română. Pentru valori numerice necunoscute folosește 0.
 """
-    response = client.models.generate_content(
-        model=os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            response_schema=AI_SCHEMA,
-        ),
+    model = os.getenv("GEMINI_MODEL", DEFAULT_GEMINI_MODEL)
+    config = types.GenerateContentConfig(
+        response_mime_type="application/json",
+        response_schema=AI_SCHEMA,
     )
+    try:
+        response = client.models.generate_content(
+            model=model,
+            contents=prompt,
+            config=config,
+        )
+    except errors.ServerError as error:
+        if error.code != 503 or model == FALLBACK_GEMINI_MODEL:
+            raise
+        print(
+            f"Gemini {model} este temporar indisponibil; "
+            f"încerc modelul de rezervă {FALLBACK_GEMINI_MODEL}."
+        )
+        response = client.models.generate_content(
+            model=FALLBACK_GEMINI_MODEL,
+            contents=prompt,
+            config=config,
+        )
     if not response.text:
         raise RuntimeError(f"Gemini a returnat un răspuns gol pentru {car['url']}")
     try:
