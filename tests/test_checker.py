@@ -23,6 +23,23 @@ def make_evaluation(title, price, mileage, reliability_score, matches=True):
 
 
 class RecommendationTests(unittest.TestCase):
+    def test_target_model_filter_includes_t_roc_and_excludes_other_models(self):
+        self.assertTrue(
+            checker.is_target_model(
+                {"title": "VW T-Roc Life 1.5 TSI DSG"}
+            )
+        )
+        self.assertTrue(
+            checker.is_target_model(
+                {"title": "Volkswagen T Roc 1.5 TSI"}
+            )
+        )
+        self.assertFalse(
+            checker.is_target_model(
+                {"title": "VW T-Cross Life 1.0 TSI DSG"}
+            )
+        )
+
     def test_recommendation_score_weights_reliability_price_and_mileage(self):
         evaluation = make_evaluation("VW Golf", 10_500, 45_000, 80)
 

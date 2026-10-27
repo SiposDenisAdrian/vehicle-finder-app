@@ -51,10 +51,11 @@ execuția cu eroare explicită dacă o pagină nu poate fi accesată sau nu găs
 anunțuri. Dacă este setat, `MAX_LISTINGS` se aplică separat fiecărei surse.
 
 Filtrele sunt definite în promptul Gemini din `checker.py`: VW Golf (generația
-7.5 sau 8) și Audi A3 (generația 8V sau 8Y), benzină, cutie automată, sub 90.000
-km și sub 21.000 EUR. Das WeltAuto caută separat în stocul Volkswagen și Audi;
-Compexit oferă stocul său de mașini rulate. Doar titlurile care conțin „Golf”
-sau „A3” sunt evaluate de Gemini.
+7.5 sau 8), VW T-Roc doar cu motorul 1.5 TSI pe benzină și Audi A3 (generația
+8V sau 8Y), cu cutie automată, sub 90.000 km și sub 21.000 EUR. Pentru T-Roc,
+alte motorizări, inclusiv 1.0 TSI și diesel, sunt respinse. Das WeltAuto caută
+separat în stocul Volkswagen și Audi; Compexit oferă stocul său de mașini rulate.
+Doar titlurile care conțin „Golf”, „T-Roc” sau „A3” sunt evaluate de Gemini.
 
 La fiecare rulare, anunțurile care respectă filtrele sunt ordonate după un scor
 combinat: fiabilitatea generală estimată a combinației model/motor/cutie (50%),

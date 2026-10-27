@@ -247,8 +247,12 @@ def scrape_listings(listing_url, link_selector, max_listings):
 
 def evaluate_with_ai(client, car):
     prompt = f"""Evaluează anunțul auto conform tuturor criteriilor obligatorii:
-- Model: VW Golf (generația 7.5 sau 8) ori Audi A3 (generația 8V sau 8Y).
-- Motor pe benzină: 1.4 TSI, 1.5 TSI/eTSI sau TFSI. Respinge dieselul.
+- Model: VW Golf (generația 7.5 sau 8), VW T-Roc cu motor 1.5 TSI pe benzină,
+  ori Audi A3 (generația 8V sau 8Y).
+- Pentru VW T-Roc acceptă exclusiv motorul 1.5 TSI pe benzină; respinge 1.0 TSI,
+  diesel și orice altă motorizare T-Roc.
+- Pentru Golf și Audi A3 acceptă motoare pe benzină 1.4 TSI, 1.5 TSI/eTSI sau
+  TFSI. Respinge dieselul.
 - Cutie exclusiv automată (DSG/S-Tronic).
 - Sub 90.000 km și sub 21.000 EUR.
 - Dacă un criteriu obligatoriu nu poate fi verificat din anunț, setează matches la false.
@@ -346,12 +350,14 @@ def recommendation_score(evaluation):
 
 
 def is_target_model(car):
-    return bool(re.search(r"\b(?:golf|a3)\b", car["title"], re.IGNORECASE))
+    return bool(
+        re.search(r"\b(?:golf|a3|t[\s-]?roc)\b", car["title"], re.IGNORECASE)
+    )
 
 
 def send_telegram_recommendations(recommendations, bot_token, chat_id):
     message = [
-        "<b>🏆 Top recomandări VW Golf / Audi A3</b>",
+        "<b>🏆 Top recomandări VW Golf / T-Roc / Audi A3</b>",
         "<i>Scor: fiabilitate generală 50%, preț 25%, kilometraj 25%.</i>",
         "<i>Fiabilitatea este orientativă; nu înlocuiește verificarea VIN și service.</i>",
     ]
@@ -448,7 +454,7 @@ def main():
     else:
         print("Nu există anunțuri care să respecte toate filtrele.")
     print(
-        f"Anunțuri Golf/A3 din stoc: {len(target_listings)}; "
+        f"Anunțuri Golf/T-Roc/A3 din stoc: {len(target_listings)}; "
         f"evaluate de AI în această rulare: {evaluated_count}; "
         f"potriviri: {len(recommendations)}; "
         f"trimise în top: {len(top_recommendations)}"
