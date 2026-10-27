@@ -70,6 +70,11 @@ web_modules/
 .env.*
 !.env.example
 
+# Python scraper
+.venv/
+__pycache__/
+*.py[cod]
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
