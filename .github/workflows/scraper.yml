@@ -53,13 +53,13 @@ jobs:
           echo "Scraper failed after 3 attempts."
           exit 1
 
-      - name: Commit deduplication state
+      - name: Commit recommendation cache
         if: ${{ always() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add seen_cars.json
+          git add car_evaluations.json
           if ! git diff --cached --quiet; then
-            git commit -m "Update seen car listings"
+            git commit -m "Update car recommendation cache"
             git push
           fi
