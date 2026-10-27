@@ -35,6 +35,9 @@ din fila **Actions**. Orele sunt în UTC; România este de obicei UTC+2 iarna ș
 UTC+3 vara. În **Settings → Actions → General**,
 permite workflow-urilor să scrie în repository pentru a salva actualizările din
 `seen_cars.json`. Protecția branch-ului poate bloca push-ul automat.
+La o eroare, scraperul se reîncearcă automat de cel mult 3 ori, cu pauze de
+30 și 60 de secunde; starea anunțurilor procesate este salvată și după o
+rulare eșuată, pentru a evita retrimiterea alertelor deja livrate.
 
 ### Surse și filtre
 
