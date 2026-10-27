@@ -4,6 +4,7 @@ import json
 import os
 import re
 import tempfile
+import time
 from pathlib import Path
 from urllib.parse import parse_qs, urljoin, urlsplit, urlunsplit
 
@@ -23,6 +24,9 @@ DEFAULT_LISTING_URLS = (
 )
 DEFAULT_GEMINI_MODEL = "gemini-3.1-flash-lite"
 FALLBACK_GEMINI_MODEL = "gemini-3.5-flash-lite"
+GEMINI_MIN_REQUEST_INTERVAL_SECONDS = 5
+GEMINI_RATE_LIMIT_RETRIES = 3
+_last_gemini_request_at = None
 LISTING_LINK_SELECTORS = {
     "autorulate.ro": 'a[href*="/auto/"]',
     "dasweltauto.ro": 'a[href*="/vehicle/"]',
@@ -245,6 +249,67 @@ def scrape_listings(listing_url, link_selector, max_listings):
     return results
 
 
+def wait_for_gemini_rate_limit():
+    global _last_gemini_request_at
+    now = time.monotonic()
+    if _last_gemini_request_at is not None:
+        delay = GEMINI_MIN_REQUEST_INTERVAL_SECONDS - (
+            now - _last_gemini_request_at
+        )
+        if delay > 0:
+            time.sleep(delay)
+    _last_gemini_request_at = time.monotonic()
+
+
+def gemini_retry_delay(error):
+    response = getattr(error, "details", None)
+    if isinstance(response, dict):
+        details = response.get("error", {}).get("details", [])
+        for detail in details:
+            retry_delay = detail.get("retryDelay")
+            if isinstance(retry_delay, str):
+                match = re.fullmatch(r"([\d.]+)s", retry_delay)
+                if match:
+                    return max(1, float(match.group(1)))
+    message = getattr(error, "message", "")
+    match = re.search(r"retry in ([\d.]+)s", message, re.IGNORECASE)
+    if match:
+        return max(1, float(match.group(1)))
+
+    headers = getattr(error.response, "headers", {})
+    retry_after = headers.get("Retry-After")
+    if retry_after:
+        try:
+            return max(1, float(retry_after))
+        except ValueError:
+            pass
+    return 60
+
+
+def generate_content_with_retry(
+    client, model, prompt, config, max_attempts=GEMINI_RATE_LIMIT_RETRIES
+):
+    for attempt in range(1, max_attempts + 1):
+        wait_for_gemini_rate_limit()
+        try:
+            return client.models.generate_content(
+                model=model,
+                contents=prompt,
+                config=config,
+            )
+        except errors.ClientError as error:
+            if error.code != 429 or attempt == max_attempts:
+                raise
+            delay = gemini_retry_delay(error)
+            print(
+                f"Gemini a limitat cererile pentru {model}; "
+                f"reîncerc în {delay:.0f} secunde "
+                f"(încercarea {attempt + 1}/{max_attempts})."
+            )
+            time.sleep(delay)
+    raise RuntimeError("Reîncercările Gemini s-au terminat fără rezultat.")
+
+
 def evaluate_with_ai(client, car):
     prompt = f"""Evaluează anunțul auto conform tuturor criteriilor obligatorii:
 - Model: VW Golf (generația 7.5 sau 8), VW T-Roc cu motor 1.5 TSI pe benzină,
@@ -275,22 +340,18 @@ Răspunde în română. Pentru valori numerice necunoscute folosește 0.
         response_schema=AI_SCHEMA,
     )
     try:
-        response = client.models.generate_content(
-            model=model,
-            contents=prompt,
-            config=config,
+        response = generate_content_with_retry(
+            client, model, prompt, config, max_attempts=1
         )
-    except errors.ServerError as error:
-        if error.code != 503 or model == FALLBACK_GEMINI_MODEL:
+    except errors.APIError as error:
+        if error.code not in (429, 503) or model == FALLBACK_GEMINI_MODEL:
             raise
         print(
-            f"Gemini {model} este temporar indisponibil; "
+            f"Gemini {model} este temporar indisponibil sau a atins limita; "
             f"încerc modelul de rezervă {FALLBACK_GEMINI_MODEL}."
         )
-        response = client.models.generate_content(
-            model=FALLBACK_GEMINI_MODEL,
-            contents=prompt,
-            config=config,
+        response = generate_content_with_retry(
+            client, FALLBACK_GEMINI_MODEL, prompt, config
         )
     if not response.text:
         raise RuntimeError(f"Gemini a returnat un răspuns gol pentru {car['url']}")

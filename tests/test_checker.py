@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 
 import checker
+from google.genai import errors
 
 
 def make_evaluation(title, price, mileage, reliability_score, matches=True):
@@ -23,6 +24,59 @@ def make_evaluation(title, price, mileage, reliability_score, matches=True):
 
 
 class RecommendationTests(unittest.TestCase):
+    def test_gemini_request_pacing_limits_calls_to_twelve_per_minute(self):
+        with patch.object(checker, "_last_gemini_request_at", None), patch.object(
+            checker.time, "monotonic", side_effect=[100, 100, 102, 107]
+        ), patch.object(checker.time, "sleep") as sleep:
+            checker.wait_for_gemini_rate_limit()
+            checker.wait_for_gemini_rate_limit()
+
+        sleep.assert_called_once_with(3)
+
+    def test_gemini_429_retries_after_server_requested_delay(self):
+        client = Mock()
+        client.models.generate_content.side_effect = [
+            errors.ClientError(
+                429,
+                {"error": {"message": "Please retry in 2.5s."}},
+                None,
+            ),
+            Mock(text="{}"),
+        ]
+
+        with patch.object(checker, "wait_for_gemini_rate_limit"), patch.object(
+            checker.time, "sleep"
+        ) as sleep:
+            response = checker.generate_content_with_retry(
+                client, "gemini-test", "prompt", {}
+            )
+
+        self.assertEqual(response.text, "{}")
+        sleep.assert_called_once_with(2.5)
+        self.assertEqual(client.models.generate_content.call_count, 2)
+
+    def test_primary_429_uses_fallback_model(self):
+        evaluation = make_evaluation("VW Golf", 15_000, 40_000, 80)
+        client = Mock()
+        client.models.generate_content.side_effect = [
+            errors.ClientError(429, {"error": {"message": "quota exceeded"}}, None),
+            Mock(text=json.dumps(evaluation)),
+        ]
+        car = {
+            "title": "VW Golf 1.5 TSI DSG",
+            "text": "Benzină, automată, 40.000 km.",
+            "url": "https://example.test/golf",
+        }
+
+        with patch.object(checker, "wait_for_gemini_rate_limit"):
+            result = checker.evaluate_with_ai(client, car)
+
+        self.assertEqual(result, evaluation)
+        self.assertEqual(
+            [call.kwargs["model"] for call in client.models.generate_content.call_args_list],
+            ["gemini-3.1-flash-lite", "gemini-3.5-flash-lite"],
+        )
+
     def test_target_model_filter_includes_t_roc_and_excludes_other_models(self):
         self.assertTrue(
             checker.is_target_model(

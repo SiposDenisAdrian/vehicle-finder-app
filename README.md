@@ -28,8 +28,10 @@ Variables**, poți adăuga:
 - `TELEGRAM_CHAT_ID`
 
 Scriptul folosește `gemini-3.1-flash-lite`, un model optimizat de Google pentru
-taskuri simple și de volum mare. Dacă răspunde temporar cu HTTP 503, încearcă
-automat modelul de rezervă `gemini-3.5-flash-lite`.
+taskuri simple și de volum mare. Limitează ritmul la cel mult 12 cereri pe minut;
+dacă Gemini răspunde cu HTTP 429, respectă timpul de așteptare indicat și
+reîncearcă. La HTTP 503 sau după epuizarea limitei principale, încearcă
+`gemini-3.5-flash-lite`.
 
 Workflow-ul din `.github/workflows/scraper.yml` rulează la fiecare 6 ore
 (00:00, 06:00, 12:00 și 18:00 UTC), în fiecare zi, și poate fi pornit manual
