@@ -168,27 +168,29 @@
     "fingerprint": "c64dd2dde9b30cfbe310055a595ba0b13502bbcf3b3008871d8366d273c8b370"
   },
   "https://www.dasweltauto.ro/vehicle/1010202667": {
+    "detail_fingerprint": "3fbc58fbc2ff2a06b5b455ae2cbdcc3da926e0556d8d2a3cca27112312a9ed24",
     "evaluation": {
       "engine": "2.0 TDI",
       "matches": false,
       "mileage": 192600,
       "price": 17550,
-      "reason": "Anunțul prezintă un motor diesel, depășește limita de kilometraj și nu specifică clar tipul cutiei de viteze.",
-      "reliability_reason": "Motorul 2.0 TDI este fiabil, dar complexitatea sistemului quattro și a cutiei automate pe un rulaj de aproape 200.000 km pot genera costuri mari de întreținere.",
-      "reliability_score": 65,
+      "reason": "Mașina are motor diesel, care este respins explicit de criterii, iar rulajul depășește limita maximă de 90.000 km.",
+      "reliability_reason": "Motorul 2.0 TDI este în general fiabil, însă rulajul mare de peste 190.000 km poate atrage costuri iminente de mentenanță.",
+      "reliability_score": 75,
       "title": "Audi A3 Limuzina Sport 2.0 TDI quattro",
       "year": 2017
     },
     "fingerprint": "af4b129fdde02df4753bfbf5d8d3867854380ae9cbe91f800f1779c752ed80bd"
   },
   "https://www.dasweltauto.ro/vehicle/1010202672": {
+    "detail_fingerprint": "0b3556ddba628c7ad786605d334b35068a69b0a71ea06d14dfbac2cafd3574c8",
     "evaluation": {
       "engine": "1.5 TFSI",
-      "matches": false,
+      "matches": true,
       "mileage": 61020,
       "price": 19920,
-      "reason": "Anunțul nu specifică clar tipul cutiei de viteze, fiind imposibil de confirmat dacă este automată.",
-      "reliability_reason": "Motorizarea 1.5 TFSI combinată cu transmisia S-Tronic este general fiabilă, deși cutia necesită mentenanță riguroasă pentru a evita uzura prematură.",
+      "reason": "Anunțul îndeplinește toate criteriile obligatorii privind modelul, motorizarea, cutia automată, kilometrajul și prețul maxim.",
+      "reliability_reason": "Motorul 1.5 TFSI și cutia DSG sunt în general fiabile, dar pot necesita o întreținere riguroasă.",
       "reliability_score": 75,
       "title": "Audi A3 Sportback 35 TFSI",
       "year": 2022
@@ -229,8 +231,8 @@
       "matches": false,
       "mileage": 56824,
       "price": 16600,
-      "reason": "Motorizarea 1.0 eTSI nu este inclusă în lista motoarelor acceptate pentru VW Golf.",
-      "reliability_reason": "Motorul 1.0 TSI/eTSI este fiabil, însă transmisia DSG poate prezenta uzură prematură la utilizarea urbană intensă.",
+      "reason": "Motorul 1.0 eTSI nu este acceptat pentru VW Golf, fiind permise doar motoarele 1.4 TSI, 1.5 TSI/eTSI sau TFSI.",
+      "reliability_reason": "Motorul de 1.0 litru cu sistem mild-hybrid și cutia DSG sunt în general fiabile, dar au o complexitate mecanică ridicată.",
       "reliability_score": 75,
       "title": "VW Golf Life 1.0 eTSI DSG mild hyb",
       "year": 2021
@@ -281,17 +283,17 @@
   },
   "https://www.dasweltauto.ro/vehicle/1013306548": {
     "evaluation": {
-      "engine": "1.4 TSI Hibrid Plug-in",
+      "engine": "1.4 TSI Plug-in Hybrid",
       "matches": false,
       "mileage": 50202,
       "price": 21175,
-      "reason": "Prețul depășește limita maximă admisă de 21.000 EUR, iar modelul GTE folosește un sistem hibrid care nu a fost specificat în criteriile de selecție.",
-      "reliability_reason": "Sistemele hibride plug-in adaugă o complexitate tehnică suplimentară care poate influența costurile de mentenanță pe termen lung comparativ cu motoarele TSI standard.",
-      "reliability_score": 70,
-      "title": "VW Noul Golf GTE",
+      "reason": "Prețul depășește limita maximă admisă de 21.000 EUR iar motorizarea GTE este plug-in hybrid și nu se încadrează strict în variantele pe benzină solicitate.",
+      "reliability_reason": "Sistemul hibrid și cutia DSG sunt în general fiabile, dar pot apărea costuri ridicate de întreținere specifice tehnologiei plug-in.",
+      "reliability_score": 75,
+      "title": "VW Golf GTE",
       "year": 2022
     },
-    "fingerprint": "bd94db259b1db6f003635dde6329cf3ef3ee83d9d29d83a940ae20741f455022"
+    "fingerprint": "6f842004c59dcc71aba03965b59bcacd5766a02fd8fd4ffac6b7af087c57b60b"
   },
   "https://www.dasweltauto.ro/vehicle/1013306577": {
     "evaluation": {
@@ -334,20 +336,6 @@
       "year": 2026
     },
     "fingerprint": "700ac8db063c5f48d1b8f22a39f5ff4a5953d7077dcc58c27a70529dc2a535ae"
-  },
-  "https://www.dasweltauto.ro/vehicle/1013306739": {
-    "evaluation": {
-      "engine": "1.5 eTSI",
-      "matches": false,
-      "mileage": 0,
-      "price": 35771,
-      "reason": "Prețul depășește limita de 21.000 EUR, iar kilometrajul nu este precizat în anunț.",
-      "reliability_reason": "Motorul 1.5 TSI/eTSI împreună cu transmisia DSG sunt fiabile per ansamblu, deși sistemul mild-hybrid adaugă o complexitate suplimentară.",
-      "reliability_score": 75,
-      "title": "VW T-Roc R-Line 1.5 eTSI DSG",
-      "year": 2026
-    },
-    "fingerprint": "9794210da08e95d64797f5b5c6f15f2d5a61279077682c1db173b11518ca1ca6"
   },
   "https://www.dasweltauto.ro/vehicle/1013306768": {
     "evaluation": {
@@ -602,18 +590,19 @@
     "fingerprint": "81937cfff37ab473cd9dde7f8c004e197eafa1fe86dfbcf0d0293eba7920251e"
   },
   "https://www.dasweltauto.ro/vehicle/1018500335": {
+    "detail_fingerprint": "06e15a0fa16c0a7487fa15e37e918834fc0cbe9219868b1bc37199d691d9f8d9",
     "evaluation": {
-      "engine": "30 TDI",
+      "engine": "2.0 TDI",
       "matches": false,
       "mileage": 103450,
       "price": 15700,
-      "reason": "Anunțul conține un motor diesel, depășește limita de kilometri și nu specifică clar tipul cutiei de viteze.",
-      "reliability_reason": "Motorul diesel TDI este fiabil, dar complexitatea sistemelor de emisii moderne și rulajul ridicat pot implica costuri de mentenanță suplimentare.",
-      "reliability_score": 60,
+      "reason": "Anunțul nu îndeplinește criteriile deoarece mașina are motor diesel, cutie manuală și un kilometraj care depășește limita maximă admisă.",
+      "reliability_reason": "Motorul 2.0 TDI este în general fiabil, însă cutia manuală și specificul rulajului pot aduce costuri de întreținere specifice.",
+      "reliability_score": 75,
       "title": "Audi A3 Sportback 30 TDI",
       "year": 2023
     },
-    "fingerprint": "69e90490de1a027ed165dfc4b64393477f62364b2eaced27beebf613262b3d78"
+    "fingerprint": "d29722cd05dd095ed0fc65dff2541473735d86b094abece3ea2b9517475f7051"
   },
   "https://www.dasweltauto.ro/vehicle/1019004883": {
     "evaluation": {
@@ -719,13 +708,13 @@
       "matches": false,
       "mileage": 85232,
       "price": 19900,
-      "reason": "Anunțul prezintă un motor diesel, iar cerința acceptă exclusiv motorizări pe benzină.",
-      "reliability_reason": "Motorul 2.0 TDI (EA288) este fiabil, însă transmisia DSG necesită mentenanță riguroasă și poate prezenta uzură în regim urban.",
+      "reason": "Anunțul a fost respins deoarece motorul este diesel (2.0 TDI) în loc de o motorizare pe benzină acceptată.",
+      "reliability_reason": "Motorul 2.0 TDI și cutia DSG sunt în general fiabile, dar dieselul nu respectă criteriul pentru benzină.",
       "reliability_score": 75,
       "title": "VW Golf Variant Style 2.0 TDI DSG",
       "year": 2022
     },
-    "fingerprint": "149fc9cf08331d549f768b9679f8c17fce4d7c5098da9b4cb4bc45f65e90a3fc"
+    "fingerprint": "38f8e5bb3f3969921bd660c42920f58d0c4cbd30167233ab309fac918553a644"
   },
   "https://www.dasweltauto.ro/vehicle/1021302023": {
     "evaluation": {
@@ -866,20 +855,6 @@
       "year": 2024
     },
     "fingerprint": "b92397b4cd8108e3092cb050c97a2b174bc378b5ae8b9ab3d7aec51b3ad8ccca"
-  },
-  "https://www.dasweltauto.ro/vehicle/1021702269": {
-    "evaluation": {
-      "engine": "1.0 TFSI",
-      "matches": false,
-      "mileage": 38750,
-      "price": 17900,
-      "reason": "Motorizarea 30 TFSI reprezinta unitatea de 1.0 litri, care nu indeplineste cerinta de motor 1.4 sau 1.5 TSI/TFSI.",
-      "reliability_reason": "Motorul 1.0 TFSI este fiabil, dar cutia DSG cu ambreiaje uscate (DQ200) asociata acestuia poate prezenta probleme de uzura prematura.",
-      "reliability_score": 70,
-      "title": "Audi A3 Limuzina Advanced 30 TFSI",
-      "year": 2021
-    },
-    "fingerprint": "f60093fd4ccf7cb1914b391937971eb5f89ec4b64398cabd0cdf115f03b96027"
   },
   "https://www.dasweltauto.ro/vehicle/1021702276": {
     "evaluation": {
@@ -1037,17 +1012,17 @@
   },
   "https://www.dasweltauto.ro/vehicle/1025800290": {
     "evaluation": {
-      "engine": "TDI",
+      "engine": "2.0 TDI",
       "matches": false,
       "mileage": 140500,
       "price": 13790,
-      "reason": "Anunțul nu respectă criteriile deoarece motorizarea este diesel și kilometrajul depășește limita de 90.000 km.",
-      "reliability_reason": "Motorul TDI este fiabil, dar complexitatea sistemelor de emisii și rulajul ridicat pot genera costuri mari de întreținere.",
-      "reliability_score": 60,
-      "title": "VW Golf Life TDI",
+      "reason": "Anunțul nu îndeplinește criteriile deoarece motorul este diesel (2.0 TDI) și kilometrajul depășește limita maximă admisă.",
+      "reliability_reason": "Motorul 2.0 TDI este în general fiabil la drum lung, însă cutia automată DSG necesită o întreținere riguroasă.",
+      "reliability_score": 70,
+      "title": "VW Golf Life 2.0 TDI",
       "year": 2021
     },
-    "fingerprint": "09699000a9ddeaa56e75083d1c9beccb60aee3a1b89317f1f7e07a0c32609521"
+    "fingerprint": "f39b02fb285bc6fa1914df4602bd58b1591109901077fa5a1b7de373b1d96eb1"
   },
   "https://www.dasweltauto.ro/vehicle/1026400008": {
     "evaluation": {
@@ -1224,12 +1199,12 @@
       "mileage": 17642,
       "price": 26450,
       "reason": "Prețul depășește limita maximă admisă de 21.000 EUR.",
-      "reliability_reason": "Motorizarea 1.5 TSI și cutia DSG sunt fiabile, dar tehnologia mild-hybrid eTSI este relativ nouă și poate implica costuri de întreținere suplimentare.",
+      "reliability_reason": "Motorul 1.5 TSI/eTSI și cutia DSG sunt în general fiabile, dar tehnologia mild-hybrid recentă poate prezenta probleme electronice minore.",
       "reliability_score": 75,
       "title": "VW T-Roc Life 1.5 eTSI DSG",
       "year": 2026
     },
-    "fingerprint": "1df248f282637abd05388e9715323dc59946244b359174031a8bb223fa90d4a4"
+    "fingerprint": "21264b7bf977d2866e94bda7b49539e00729cffa0e3b79edd09dd5c620763649"
   },
   "https://www.dasweltauto.ro/vehicle/1027500159": {
     "evaluation": {
@@ -1358,16 +1333,17 @@
     "fingerprint": "b00a52ca499664cbf02280339d0754e5f07fd2ef6db0227cb469d85edc0f677f"
   },
   "https://www.dasweltauto.ro/vehicle/9100203846": {
+    "detail_fingerprint": "d6d225befd740ca3a42d73cfc3404b8b4db15a37f19c0cd95db7bf35e340498f",
     "evaluation": {
       "engine": "1.5 TSI",
       "matches": false,
       "mileage": 0,
       "price": 22300,
-      "reason": "Prețul depășește limita de 21.000 EUR, iar kilometrajul și tipul transmisiei nu sunt menționate în anunț.",
-      "reliability_reason": "Motorul 1.5 TSI este fiabil, însă fiabilitatea pe termen lung a cutiei DSG depinde mult de regimul de utilizare și mentenanța efectuată.",
+      "reason": "Prețul depășește limita de 21.000 EUR, cutia este manuală în loc de automată, iar kilometrajul nu este specificat.",
+      "reliability_reason": "Motorul 1.5 TSI este în general fiabil, însă lipsa specificației cutiei automate și lipsa istoricului concret introduc incertitudini.",
       "reliability_score": 75,
       "title": "VW Golf Prime 1.5 TSI ACT",
-      "year": 0
+      "year": 2026
     },
     "fingerprint": "09bde59443691c67b6129e336bbab3e71e7be1704c4f77ab12e6e0b1862cf6a4"
   },
