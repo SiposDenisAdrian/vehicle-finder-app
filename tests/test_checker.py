@@ -167,6 +167,82 @@ class RecommendationTests(unittest.TestCase):
             )
             self.assertEqual(len(json.loads(cache_path.read_text())), 4)
 
+    def test_main_fetches_details_for_cached_unknown_transmission(self):
+        car = {
+            "id": "https://www.dasweltauto.ro/vehicle/1010202672",
+            "url": "https://www.dasweltauto.ro/vehicle/1010202672",
+            "title": "Audi A3 Sportback 35 TFSI",
+            "text": "1.5 TFSI, 61.020 km, 19.920 EUR.",
+        }
+        cached_evaluation = make_evaluation(
+            car["title"],
+            19_920,
+            61_020,
+            75,
+            matches=False,
+        )
+        cached_evaluation["reason"] = (
+            "Anunțul nu specifică clar tipul cutiei de viteze."
+        )
+        updated_evaluation = make_evaluation(
+            car["title"], 19_920, 61_020, 75
+        )
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = Path(temp_dir) / "car_evaluations.json"
+            cache_path.write_text(
+                json.dumps(
+                    {
+                        car["id"]: {
+                            "fingerprint": checker.listing_fingerprint(car),
+                            "evaluation": cached_evaluation,
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            sent_recommendations = []
+
+            with patch.object(checker, "CACHE_FILE", cache_path), patch.dict(
+                os.environ,
+                {
+                    "GEMINI_API_KEY": "test-key",
+                    "TELEGRAM_BOT_TOKEN": "test-token",
+                    "TELEGRAM_CHAT_ID": "test-chat",
+                },
+            ), patch.object(
+                checker, "get_listing_urls", return_value=["https://www.dasweltauto.ro/s/audi"]
+            ), patch.object(
+                checker, "get_link_selector", return_value='a[href*="/vehicle/"]'
+            ), patch.object(
+                checker, "scrape_listings", return_value=[car]
+            ), patch.object(
+                checker.genai, "Client", return_value=Mock()
+            ), patch.object(
+                checker,
+                "fetch_listing_details",
+                return_value="Tip transmisie\nTransmisie automata, DSG, Tiptronic",
+            ) as fetch_details, patch.object(
+                checker,
+                "evaluate_with_ai",
+                return_value=updated_evaluation,
+            ) as evaluate, patch.object(
+                checker,
+                "send_telegram_recommendations",
+                side_effect=lambda recommendations, *_: sent_recommendations.append(
+                    recommendations
+                ),
+            ):
+                checker.main()
+                checker.main()
+
+            fetch_details.assert_called_once_with(car["url"])
+            evaluate.assert_called_once()
+            self.assertIn("Transmisie automata, DSG", evaluate.call_args.args[1]["text"])
+            self.assertEqual(len(sent_recommendations[0]), 1)
+            saved_entry = json.loads(cache_path.read_text())[car["id"]]
+            self.assertTrue(saved_entry["evaluation"]["matches"])
+            self.assertTrue(saved_entry["detail_fingerprint"])
+
 
 if __name__ == "__main__":
     unittest.main()

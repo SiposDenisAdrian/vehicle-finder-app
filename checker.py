@@ -249,6 +249,28 @@ def scrape_listings(listing_url, link_selector, max_listings):
     return results
 
 
+def fetch_listing_details(listing_url):
+    hostname = (urlsplit(listing_url).hostname or "").lower()
+    if hostname != "dasweltauto.ro" and not hostname.endswith(".dasweltauto.ro"):
+        raise ValueError(f"Detaliile nu sunt configurate pentru: {listing_url}")
+
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        try:
+            page = browser.new_page()
+            response = page.goto(
+                listing_url, wait_until="domcontentloaded", timeout=45_000
+            )
+            if response and response.status >= 400:
+                raise RuntimeError(
+                    f"Pagina anunțului a răspuns cu HTTP {response.status}: "
+                    f"{listing_url}"
+                )
+            return page.locator("body").inner_text(timeout=15_000)[:12_000]
+        finally:
+            browser.close()
+
+
 def wait_for_gemini_rate_limit():
     global _last_gemini_request_at
     now = time.monotonic()
@@ -400,6 +422,18 @@ def listing_fingerprint(car):
     return hashlib.sha256(content).hexdigest()
 
 
+def needs_transmission_details(evaluation):
+    reason = evaluation.get("reason", "").casefold()
+    return (
+        not evaluation.get("matches", False)
+        and ("cutie" in reason or "transmis" in reason)
+        and any(
+            marker in reason
+            for marker in ("nu ", "neclar", "imposibil", "confirm", "necunoscut")
+        )
+    )
+
+
 def recommendation_score(evaluation):
     price_score = max(0, min(100, 100 * (1 - evaluation["price"] / 21_000)))
     mileage_score = max(0, min(100, 100 * (1 - evaluation["mileage"] / 90_000)))
@@ -488,16 +522,41 @@ def main():
     for car in target_listings:
         fingerprint = listing_fingerprint(car)
         cached = evaluation_cache.get(car["id"])
+        detail_fingerprint = None
         if cached and cached["fingerprint"] == fingerprint:
             evaluation = cached["evaluation"]
+            detail_fingerprint = cached.get("detail_fingerprint")
         else:
             evaluation = evaluate_with_ai(client, car)
             evaluated_count += 1
-            evaluation_cache[car["id"]] = {
-                "fingerprint": fingerprint,
-                "evaluation": evaluation,
+
+        hostname = (urlsplit(car["url"]).hostname or "").lower()
+        if (
+            not detail_fingerprint
+            and (hostname == "dasweltauto.ro" or hostname.endswith(".dasweltauto.ro"))
+            and needs_transmission_details(evaluation)
+        ):
+            details = fetch_listing_details(car["url"])
+            detail_fingerprint = hashlib.sha256(
+                details.encode("utf-8")
+            ).hexdigest()
+            detailed_car = {
+                **car,
+                "text": f"{car['text']}\n\nDetalii complete din anunț:\n{details}",
             }
-            save_evaluation_cache(evaluation_cache)
+            evaluation = evaluate_with_ai(client, detailed_car)
+            evaluated_count += 1
+
+        evaluation_cache[car["id"]] = {
+            "fingerprint": fingerprint,
+            "evaluation": evaluation,
+            **(
+                {"detail_fingerprint": detail_fingerprint}
+                if detail_fingerprint
+                else {}
+            ),
+        }
+        save_evaluation_cache(evaluation_cache)
         if evaluation["matches"]:
             recommendations.append(
                 {

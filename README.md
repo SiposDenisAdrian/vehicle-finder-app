@@ -58,6 +58,10 @@ Filtrele sunt definite în promptul Gemini din `checker.py`: VW Golf (generația
 alte motorizări, inclusiv 1.0 TSI și diesel, sunt respinse. Das WeltAuto caută
 separat în stocul Volkswagen și Audi; Compexit oferă stocul său de mașini rulate.
 Doar titlurile care conțin „Golf”, „T-Roc” sau „A3” sunt evaluate de Gemini.
+Pentru anunțurile Das WeltAuto respinse doar fiindcă transmisia nu este clară în
+rezumat, scraperul deschide pagina individuală și reevaluează mașina cu
+specificațiile complete. Aceste verificări sunt păstrate în cache pentru a evita
+apeluri Gemini repetate.
 
 La fiecare rulare, anunțurile care respectă filtrele sunt ordonate după un scor
 combinat: fiabilitatea generală estimată a combinației model/motor/cutie (50%),
