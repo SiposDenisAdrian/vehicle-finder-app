@@ -581,13 +581,13 @@
       "matches": false,
       "mileage": 0,
       "price": 24500,
-      "reason": "Prețul depășește bugetul maxim de 21.000 EUR și kilometrajul nu este specificat în anunț.",
-      "reliability_reason": "Motorul 1.5 TSI/eTSI împreună cu transmisia DSG sunt fiabile, dar sistemul mild-hybrid adaugă complexitate electronică suplimentară.",
+      "reason": "Prețul depășește limita maximă de 21.000 EUR, iar kilometrajul nu este specificat în anunț.",
+      "reliability_reason": "Motorul 1.5 TSI/eTSI cu transmisie DSG este fiabil, dar sistemul mild-hybrid și electronica complexă pot genera costuri de întreținere suplimentare.",
       "reliability_score": 75,
       "title": "VW Golf Prime 1.5 eTSI DSG ACT mild hyb",
       "year": 0
     },
-    "fingerprint": "d39fed816aa045b78a862a44f607c3cb93d98b6784c1bf3f921815d64d00fc78"
+    "fingerprint": "9ce048b231a2ffa3c9676d414570a295bf578fd50257396083712f5f7499a745"
   },
   "https://www.dasweltauto.ro/vehicle/1018500325": {
     "evaluation": {
@@ -903,13 +903,13 @@
       "matches": false,
       "mileage": 15085,
       "price": 28900,
-      "reason": "Prețul depășește limita de 21.000 EUR, iar motorizarea 2.0 TSI nu se încadrează în specificațiile solicitate.",
-      "reliability_reason": "Motorul 2.0 TSI și cutia DSG7 sunt performante, dar pot prezenta costuri de întreținere ridicate și uzură prematură în regim de utilizare sportivă.",
+      "reason": "Prețul depășește limita maximă de 21.000 EUR, iar motorizarea 2.0 TSI nu se încadrează în specificațiile solicitate.",
+      "reliability_reason": "Motorul 2.0 TSI și transmisia DSG sunt performante, dar pot prezenta costuri ridicate de întreținere și riscuri specifice uzurii la rulaje mari.",
       "reliability_score": 75,
       "title": "VW Golf GTI 2.0 TSI DSG7",
       "year": 2024
     },
-    "fingerprint": "b97c3781bcf9d363f4e10c6b9f2696db76d54e01b88abe88c551a4b38e606d86"
+    "fingerprint": "51a08513c134cf611ee15d2a9588c000dae0440ab77a0490255980bac49f4311"
   },
   "https://www.dasweltauto.ro/vehicle/1021702337": {
     "evaluation": {
@@ -1043,13 +1043,13 @@
       "matches": false,
       "mileage": 2907,
       "price": 35500,
-      "reason": "Prețul depășește limita maximă de 21.000 EUR stabilită prin cerințe.",
-      "reliability_reason": "Motorul 1.5 TSI/eTSI împreună cu transmisia DSG sunt fiabile, dar sistemul mild-hybrid adaugă o complexitate tehnică suplimentară.",
+      "reason": "Prețul depășește limita maximă de 21.000 EUR stabilită în cerințe.",
+      "reliability_reason": "Motorul 1.5 TSI este fiabil, dar sistemul mild-hybrid eTSI și transmisia DSG pot prezenta complicații electronice pe termen lung.",
       "reliability_score": 75,
       "title": "VW T-Roc R-Line 1.5 eTSI DSG",
       "year": 2025
     },
-    "fingerprint": "023b68e23c75fc9582c56191ff1ca5bc2e073708782bd22c23c9269a8a187584"
+    "fingerprint": "f4f9fea3a736cafdfbbf6930db30fba6e2088f9e3cec835f51ff69a47be55fc0"
   },
   "https://www.dasweltauto.ro/vehicle/1025800290": {
     "evaluation": {
@@ -1151,17 +1151,17 @@
   },
   "https://www.dasweltauto.ro/vehicle/1027200004": {
     "evaluation": {
-      "engine": "1.5 TSI PHEV",
+      "engine": "1.5 TSI",
       "matches": false,
       "mileage": 9700,
       "price": 33300,
-      "reason": "Prețul depășește bugetul maxim de 21.000 EUR.",
-      "reliability_reason": "Motorul 1.5 TSI combinat cu sistemul hibrid și transmisia DSG este o variantă modernă, dar complexitatea sistemului PHEV poate ridica costuri de întreținere pe termen lung.",
+      "reason": "Prețul de 33.300 EUR depășește limita maximă de 21.000 EUR stabilită.",
+      "reliability_reason": "Motorizarea 1.5 TSI cuplat la DSG este fiabilă, însă sistemul PHEV adaugă un nivel suplimentar de complexitate tehnică.",
       "reliability_score": 75,
       "title": "VW Golf Style1.5 TSI DSG PHEV",
       "year": 2025
     },
-    "fingerprint": "5d4fd72e0ea8990acd7400611531b95207a07176aa977e3281507dfeb8e99bbf"
+    "fingerprint": "8e7cc81af16675e519987daf6d52e7244d6f621176fa9aa8f8cd32b04481fabc"
   },
   "https://www.dasweltauto.ro/vehicle/1027200007": {
     "evaluation": {
@@ -1169,13 +1169,13 @@
       "matches": false,
       "mileage": 37966,
       "price": 29900,
-      "reason": "Mașina are motorizare diesel, care este exclusă conform criteriilor, iar prețul depășește limita de 21.000 EUR.",
-      "reliability_reason": "Motorul 2.0 TDI este fiabil, însă transmisia DSG necesită mentenanță riguroasă și poate prezenta probleme de mecatronică în timp.",
-      "reliability_score": 60,
+      "reason": "Mașina este echipată cu un motor diesel, iar prețul depășește limita de 21.000 EUR.",
+      "reliability_reason": "Motorul 2.0 TDI este fiabil, dar cutiile DSG necesită întreținere riguroasă și pot prezenta probleme la rulajul urban intens.",
+      "reliability_score": 75,
       "title": "VW T-Roc Style 2.0 TDI DSG TD",
       "year": 2025
     },
-    "fingerprint": "eacc84abaf005e75371e8c10b14f6f3212b4017f3513dc28a95a25ef2c739dd4"
+    "fingerprint": "e0eaee511b8a9e2203632d5709e84a8fefb50ab92001897f33676d4624c50f82"
   },
   "https://www.dasweltauto.ro/vehicle/1027200024": {
     "evaluation": {
@@ -1183,13 +1183,13 @@
       "matches": false,
       "mileage": 0,
       "price": 24500,
-      "reason": "Prețul depășește limita maximă admisă de 21.000 EUR, iar kilometrajul nu este specificat în anunț.",
-      "reliability_reason": "Motorul 1.5 eTSI cu cutia DSG este o combinație modernă, însă sistemul mild-hybrid și complexitatea tehnologică pot prezenta riscuri pe termen lung.",
+      "reason": "Prețul depășește limita de 21.000 EUR, iar kilometrajul este necunoscut.",
+      "reliability_reason": "Motorizarea 1.5 eTSI cu transmisie DSG este fiabilă, dar sistemul mild-hybrid poate genera probleme electronice minore.",
       "reliability_score": 75,
       "title": "VW Golf Var. Life mildHy.1.5 eTSI DSG",
       "year": 2026
     },
-    "fingerprint": "a7d17efb37f0fa46681882108ffecbae2041f0d4cd52237b22bc9dd232fbb571"
+    "fingerprint": "d0d46aebcfb1c1328ffa968a9b66cb741f5ca685cd3e6a0226823d47df40dc48"
   },
   "https://www.dasweltauto.ro/vehicle/1027200074": {
     "evaluation": {
@@ -1197,13 +1197,13 @@
       "matches": false,
       "mileage": 0,
       "price": 29900,
-      "reason": "Prețul depășește limita de 21.000 EUR, iar kilometrajul nu este specificat.",
-      "reliability_reason": "Motorul 1.5 TSI/eTSI este fiabil, însă transmisia DSG poate necesita întreținere costisitoare pe termen lung.",
+      "reason": "Prețul depășește limita maximă de 21.000 EUR, iar kilometrajul nu este specificat.",
+      "reliability_reason": "Motorul 1.5 TSI împreună cu transmisia DSG oferă un echilibru bun, dar tehnologia mild-hybrid eTSI este relativ nouă pe piață.",
       "reliability_score": 75,
       "title": "VW T-Roc Life 1.5 eTSI DSG",
       "year": 2026
     },
-    "fingerprint": "03b0d504f1cdd6e255ce28bfed68ab5bb890a1ea57adc12bace3b4533a1655b0"
+    "fingerprint": "42c91782acb777e7c3f73b4012a4cf35b477d71d56104be92212f4781a59bc89"
   },
   "https://www.dasweltauto.ro/vehicle/1027200126": {
     "evaluation": {
@@ -1211,13 +1211,13 @@
       "matches": false,
       "mileage": 21775,
       "price": 28900,
-      "reason": "Prețul depășește limita maximă de 21.000 EUR stabilită pentru această achiziție.",
-      "reliability_reason": "Sistemele hibride plug-in sunt complexe, iar fiabilitatea pe termen lung a integrării electrice cu motorul 1.5 TSI rămâne încă de demonstrat în timp.",
+      "reason": "Prețul depășește limita de 21.000 EUR impusă prin cerințe.",
+      "reliability_reason": "Motorul 1.5 TSI și cutia DSG sunt în general fiabile, însă sistemul hibrid plug-in adaugă complexitate și potențiale riscuri electronice pe termen lung.",
       "reliability_score": 75,
       "title": "VW Golf Life 1.5 TSI DSG PHEV",
       "year": 2025
     },
-    "fingerprint": "25b8aa76a03b3ce05596ae61f73933db7aeea0d589e7ceb03a0d80ce1410891a"
+    "fingerprint": "83d3b1edb9cc4805ba8713a749905320f3c0b953b1fce56a923f880d8a4f4777"
   },
   "https://www.dasweltauto.ro/vehicle/1027200128": {
     "evaluation": {
@@ -1225,13 +1225,13 @@
       "matches": false,
       "mileage": 14071,
       "price": 24250,
-      "reason": "Prețul de 24.250 EUR depășește limita maximă stabilită de 21.000 EUR.",
-      "reliability_reason": "Combinația motor 1.5 eTSI cu cutie DSG este modernă și eficientă, însă sistemul mild-hybrid poate genera probleme electronice minore pe termen lung.",
+      "reason": "Prețul depășește limita maximă de 21.000 EUR stabilită prin cerințe.",
+      "reliability_reason": "Motorul 1.5 TSI/eTSI și transmisia DSG sunt fiabile, dar sistemul mild-hybrid și electronica complexă pot necesita întreținere suplimentară pe termen lung.",
       "reliability_score": 75,
       "title": "VW Golf Prime 1.5 eTSI DSG ACT mild hyb",
-      "year": 2026
+      "year": 0
     },
-    "fingerprint": "f07dfc7e62287dde273bf38b9973656d228405803ca6fda0f7bd268ab0826dc3"
+    "fingerprint": "ec48b695e810e7f6cc4991ed68c80f598f110bca0aa5e906ed94815694a065fb"
   },
   "https://www.dasweltauto.ro/vehicle/1027200134": {
     "evaluation": {
@@ -1239,13 +1239,13 @@
       "matches": false,
       "mileage": 17642,
       "price": 26450,
-      "reason": "Prețul depășește limita maximă admisă de 21.000 EUR.",
-      "reliability_reason": "Motorul 1.5 TSI/eTSI și cutia DSG sunt în general fiabile, dar tehnologia mild-hybrid recentă poate prezenta probleme electronice minore.",
+      "reason": "Prețul depășește limita maximă de 21.000 EUR stabilită în cerințe.",
+      "reliability_reason": "Motorul 1.5 TSI/eTSI cu transmisie DSG este o combinație modernă și eficientă, dar sistemul mild-hybrid și tehnologia de dezactivare a cilindrilor pot prezenta complexități tehnice pe termen lung.",
       "reliability_score": 75,
       "title": "VW T-Roc Life 1.5 eTSI DSG",
       "year": 2026
     },
-    "fingerprint": "21264b7bf977d2866e94bda7b49539e00729cffa0e3b79edd09dd5c620763649"
+    "fingerprint": "96126af72a4c12ee88398760c594769fcc3d59b565eb5f5a59d9bc48087c2b33"
   },
   "https://www.dasweltauto.ro/vehicle/1027500159": {
     "evaluation": {
