@@ -673,20 +673,6 @@
     },
     "fingerprint": "557f9fb4c6ccb1d0f49a8d1e10fa75c385f8e06f887127e8a8c4fbdd92e55b1f"
   },
-  "https://www.dasweltauto.ro/vehicle/1019400408": {
-    "evaluation": {
-      "engine": "2.0 TDI",
-      "matches": false,
-      "mileage": 109677,
-      "price": 18500,
-      "reason": "Mașina utilizează motorizare diesel, care este exclusă, și depășește limita de 90.000 km.",
-      "reliability_reason": "Motorul 2.0 TDI și cutia DSG sunt fiabile, însă acest exemplar are un rulaj ridicat care necesită mentenanță preventivă riguroasă.",
-      "reliability_score": 75,
-      "title": "VW Golf Style 2.0 TDI DSG",
-      "year": 2022
-    },
-    "fingerprint": "cc8623b08c4e0a5e0f5f2b7b0594e90aaae6851c6b326482c6fd9784f4e674d7"
-  },
   "https://www.dasweltauto.ro/vehicle/1019400409": {
     "evaluation": {
       "engine": "2.0 TDI",
