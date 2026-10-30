@@ -659,6 +659,48 @@
     },
     "fingerprint": "06c565957d9693a27fc9b17a388f9bfe669905df1d9b86eb947fb4e6cbb41c41"
   },
+  "https://www.dasweltauto.ro/vehicle/1019400407": {
+    "evaluation": {
+      "engine": "2.0 TDI",
+      "matches": false,
+      "mileage": 77841,
+      "price": 18500,
+      "reason": "Anunțul prezintă un motor diesel, tip de combustibil respins în criteriile de selecție.",
+      "reliability_reason": "Motorul 2.0 TDI este fiabil, dar complexitatea sistemelor de emisii și a cutiei DSG necesită mentenanță riguroasă.",
+      "reliability_score": 75,
+      "title": "VW Golf Life 2.0 TDI DSG",
+      "year": 2022
+    },
+    "fingerprint": "557f9fb4c6ccb1d0f49a8d1e10fa75c385f8e06f887127e8a8c4fbdd92e55b1f"
+  },
+  "https://www.dasweltauto.ro/vehicle/1019400408": {
+    "evaluation": {
+      "engine": "2.0 TDI",
+      "matches": false,
+      "mileage": 109677,
+      "price": 18500,
+      "reason": "Mașina utilizează motorizare diesel, care este exclusă, și depășește limita de 90.000 km.",
+      "reliability_reason": "Motorul 2.0 TDI și cutia DSG sunt fiabile, însă acest exemplar are un rulaj ridicat care necesită mentenanță preventivă riguroasă.",
+      "reliability_score": 75,
+      "title": "VW Golf Style 2.0 TDI DSG",
+      "year": 2022
+    },
+    "fingerprint": "cc8623b08c4e0a5e0f5f2b7b0594e90aaae6851c6b326482c6fd9784f4e674d7"
+  },
+  "https://www.dasweltauto.ro/vehicle/1019400409": {
+    "evaluation": {
+      "engine": "2.0 TDI",
+      "matches": false,
+      "mileage": 83078,
+      "price": 18500,
+      "reason": "Anunțul conține un motor diesel (TDI), în timp ce cerințele acceptă exclusiv motorizări pe benzină.",
+      "reliability_reason": "Motorul 2.0 TDI este fiabil, dar este respins din cauza criteriului de combustibil solicitat.",
+      "reliability_score": 75,
+      "title": "VW Noul Golf Style 2.0 TDI DSG",
+      "year": 2020
+    },
+    "fingerprint": "626c52cd6fd504e2acb6800a7c70a561acef59f275115001b2189f4852d54b67"
+  },
   "https://www.dasweltauto.ro/vehicle/1019903874": {
     "evaluation": {
       "engine": "1.5 eTSI",
