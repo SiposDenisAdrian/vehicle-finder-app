@@ -224,20 +224,6 @@
     },
     "fingerprint": "d73737ed18feb16ae021cfc11fe401d02851c27c652223e10f2062875d3c4c4f"
   },
-  "https://www.dasweltauto.ro/vehicle/1012500059": {
-    "evaluation": {
-      "engine": "1.0 eTSI",
-      "matches": false,
-      "mileage": 123013,
-      "price": 14157,
-      "reason": "Anunțul nu îndeplinește criteriul de kilometraj maxim de 90.000 km și are motor de 1.0 litri, neacceptat pentru Golf.",
-      "reliability_reason": "Motorul 1.0 eTSI are o fiabilitate rezonabilă, dar sistemul mild-hybrid poate adăuga costuri potențiale de întreținere în timp.",
-      "reliability_score": 70,
-      "title": "VW Golf Life 1.0 eTSI DSG mild hyb",
-      "year": 2021
-    },
-    "fingerprint": "0acae40009171b365116d68fd1ee1d3a0d2074291747dd6d25bf059735ad0334"
-  },
   "https://www.dasweltauto.ro/vehicle/1012902739": {
     "evaluation": {
       "engine": "2.0 TDI",
@@ -748,13 +734,13 @@
       "matches": false,
       "mileage": 0,
       "price": 31990,
-      "reason": "Prețul depășește bugetul maxim de 21.000 EUR iar kilometrajul nu este specificat.",
-      "reliability_reason": "Motorul 1.5 TSI și cutia DSG sunt în general fiabile, dar sistemul mild-hybrid poate adăuga complexitate electronică.",
+      "reason": "Prețul depășește bugetul maxim de 21.000 EUR, iar kilometrajul nu este specificat în anunț.",
+      "reliability_reason": "Motorul 1.5 TSI este fiabil, dar sistemul mild-hybrid eTSI și cutia DSG pot prezenta probleme electronice sau de mecatronică pe termen lung.",
       "reliability_score": 75,
-      "title": "VW Golf Life 1.0 eTSI DSG mild hyb",
-      "year": 2026
+      "title": "VW T-Roc Life 1.5 eTSI DSG",
+      "year": 0
     },
-    "fingerprint": "92f99f2f2e583d69415cd0f7d65edabd020f177e5cdde8dc924eb8d66b74c7b7"
+    "fingerprint": "24af840a1d5cddd0329a567121b878fc0152571840a090cd2071870eede42faa"
   },
   "https://www.dasweltauto.ro/vehicle/1020201851": {
     "evaluation": {
