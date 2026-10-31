@@ -744,17 +744,17 @@
   },
   "https://www.dasweltauto.ro/vehicle/1019903963": {
     "evaluation": {
-      "engine": "1.0 eTSI",
+      "engine": "1.5 eTSI",
       "matches": false,
-      "mileage": 123013,
-      "price": 14157,
-      "reason": "Mașina depășește limita de 90.000 km și folosește un motor 1.0 TSI care nu a fost solicitat în criterii.",
-      "reliability_reason": "Motorizarea 1.0 eTSI combinată cu transmisia DSG este fiabilă, dar motorul în trei cilindri are o uzură mai rapidă la rulaje mari.",
-      "reliability_score": 70,
+      "mileage": 0,
+      "price": 31990,
+      "reason": "Prețul depășește bugetul maxim de 21.000 EUR iar kilometrajul nu este specificat.",
+      "reliability_reason": "Motorul 1.5 TSI și cutia DSG sunt în general fiabile, dar sistemul mild-hybrid poate adăuga complexitate electronică.",
+      "reliability_score": 75,
       "title": "VW Golf Life 1.0 eTSI DSG mild hyb",
-      "year": 2021
+      "year": 2026
     },
-    "fingerprint": "9722cfae17ba07a4e1519bd7eada458b2c85624c9cd5effe774569d860c13375"
+    "fingerprint": "92f99f2f2e583d69415cd0f7d65edabd020f177e5cdde8dc924eb8d66b74c7b7"
   },
   "https://www.dasweltauto.ro/vehicle/1020201851": {
     "evaluation": {
@@ -1079,20 +1079,6 @@
       "year": 2021
     },
     "fingerprint": "f39b02fb285bc6fa1914df4602bd58b1591109901077fa5a1b7de373b1d96eb1"
-  },
-  "https://www.dasweltauto.ro/vehicle/1026400008": {
-    "evaluation": {
-      "engine": "1.5 TSI",
-      "matches": false,
-      "mileage": 40217,
-      "price": 21990,
-      "reason": "Prețul depășește pragul maxim stabilit de 21.000 EUR.",
-      "reliability_reason": "Motorul 1.5 TSI și transmisia DSG au o fiabilitate bună, dar necesită mentenanță riguroasă pentru a evita problemele de mecatronică.",
-      "reliability_score": 75,
-      "title": "VW T-Roc Life 1.5 TSI DSG",
-      "year": 2023
-    },
-    "fingerprint": "7ad1a32120e3466bf4491cf8634ea1037540262b7a0a5dfe33dbe0bd86628fa6"
   },
   "https://www.dasweltauto.ro/vehicle/1026700012": {
     "evaluation": {
