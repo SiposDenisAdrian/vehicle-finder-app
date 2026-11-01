@@ -462,6 +462,20 @@
     },
     "fingerprint": "10ef24f27fbec248bc9a12c40228a265e129971a3f3c94758c03d499baf17c63"
   },
+  "https://www.dasweltauto.ro/vehicle/1017701728": {
+    "evaluation": {
+      "engine": "1.5 TSI",
+      "matches": false,
+      "mileage": 18524,
+      "price": 24999,
+      "reason": "Prețul depășește limita maximă stabilită de 21.000 EUR.",
+      "reliability_reason": "Motorizarea 1.5 TSI împreună cu transmisia DSG oferă un echilibru bun, însă sistemele hibride adaugă un nivel de complexitate tehnică suplimentară.",
+      "reliability_score": 75,
+      "title": "VW Golf Life 1.5 TSI DSG PHEV TD",
+      "year": 2025
+    },
+    "fingerprint": "6a6a48de3c664d84f26b1237a6377d4a6e10435773a4a1dab4109e20675522b6"
+  },
   "https://www.dasweltauto.ro/vehicle/1017701730": {
     "evaluation": {
       "engine": "2.0 TDI",
@@ -839,20 +853,6 @@
       "year": 2022
     },
     "fingerprint": "6ebd39f9abf725e61575d6b344a006693da0d4e9fb3f6393ba22cf38e101d79e"
-  },
-  "https://www.dasweltauto.ro/vehicle/1021702136": {
-    "evaluation": {
-      "engine": "30 TDI",
-      "matches": false,
-      "mileage": 102472,
-      "price": 15500,
-      "reason": "Anunțul respinge vehiculul deoarece este echipat cu motorizare diesel, iar kilometrajul depășește limita de 90.000 km.",
-      "reliability_reason": "Motorizările TDI sunt recunoscute pentru fiabilitate, dar cutiile DSG pot prezenta probleme costisitoare de mecatronică la rulaje ridicate.",
-      "reliability_score": 60,
-      "title": "Audi A3 Sportback 30 TDI",
-      "year": 2022
-    },
-    "fingerprint": "72f0be5716e7a91b4913dc134f7ad057122a1f9915be934e6afad6b15e3db2d2"
   },
   "https://www.dasweltauto.ro/vehicle/1021702226": {
     "evaluation": {
