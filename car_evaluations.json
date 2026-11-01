@@ -1053,18 +1053,19 @@
     "fingerprint": "f4f9fea3a736cafdfbbf6930db30fba6e2088f9e3cec835f51ff69a47be55fc0"
   },
   "https://www.dasweltauto.ro/vehicle/1025800290": {
+    "detail_fingerprint": "44f535eed86ce5f6799eedb12e52f00f9db43cb47b77161dedb84f9decb40f04",
     "evaluation": {
       "engine": "2.0 TDI",
       "matches": false,
       "mileage": 140500,
       "price": 13790,
-      "reason": "Anunțul nu îndeplinește criteriile deoarece motorul este diesel (2.0 TDI) și kilometrajul depășește limita maximă admisă.",
-      "reliability_reason": "Motorul 2.0 TDI este în general fiabil la drum lung, însă cutia automată DSG necesită o întreținere riguroasă.",
-      "reliability_score": 70,
-      "title": "VW Golf Life 2.0 TDI",
+      "reason": "Mașina folosește motorizare diesel și transmisie manuală, ambele fiind incompatibile cu cerințele, iar kilometrajul depășește limita de 90.000 km.",
+      "reliability_reason": "Motorul 2.0 TDI este fiabil, însă fiabilitatea generală este afectată de complexitatea sistemelor de control al emisiilor și de costurile de întreținere specifice motorizărilor diesel.",
+      "reliability_score": 65,
+      "title": "VW Golf Life TDI",
       "year": 2021
     },
-    "fingerprint": "f39b02fb285bc6fa1914df4602bd58b1591109901077fa5a1b7de373b1d96eb1"
+    "fingerprint": "09699000a9ddeaa56e75083d1c9beccb60aee3a1b89317f1f7e07a0c32609521"
   },
   "https://www.dasweltauto.ro/vehicle/1026700012": {
     "evaluation": {
