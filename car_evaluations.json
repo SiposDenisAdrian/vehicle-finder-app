@@ -910,21 +910,6 @@
     },
     "fingerprint": "0c6bf6091d8cdfa997aa7190d2ed3299ec69725941f8b2d9d8081dac471e46cb"
   },
-  "https://www.dasweltauto.ro/vehicle/1021702361": {
-    "detail_fingerprint": "045eb4131a6bf1549f142b5b20bcb600fb71baab6447ad28b5c8db3b18606e9c",
-    "evaluation": {
-      "engine": "1.4 TSI",
-      "matches": false,
-      "mileage": 152191,
-      "price": 7500,
-      "reason": "Masina are peste 90.000 km și este echipată cu o cutie de viteze manuală, nu automată, încălcând criteriile obligatorii.",
-      "reliability_reason": "Motorul 1.4 TSI din generația EA211 este considerat destul de fiabil, însă fiabilitatea generală depinde de întreținerea anterioară la un kilometraj ridicat.",
-      "reliability_score": 75,
-      "title": "VW Noul Golf Comfortline 1.4 TSI",
-      "year": 2017
-    },
-    "fingerprint": "94df40668e5826cb1af531c1d6435d18cf2f228c4e1fd38fb9e44c11ab154b87"
-  },
   "https://www.dasweltauto.ro/vehicle/1022002043": {
     "evaluation": {
       "engine": "1.5 TSI PHEV",
@@ -1153,17 +1138,17 @@
   },
   "https://www.dasweltauto.ro/vehicle/1027200004": {
     "evaluation": {
-      "engine": "1.5 TSI PHEV",
+      "engine": "1.5 TSI",
       "matches": false,
       "mileage": 11400,
       "price": 33300,
-      "reason": "Prețul depășește pragul maxim de 21.000 EUR stabilit în criterii.",
-      "reliability_reason": "Motorizarea 1.5 TSI cuplat la DSG este o combinație matură, însă sistemele hibride pot prezenta o complexitate tehnică suplimentară.",
+      "reason": "Prețul depășește limita maximă de 21.000 EUR stabilită prin criteriile obligatorii.",
+      "reliability_reason": "Combinația motor 1.5 TSI cu transmisia DSG este modernă și fiabilă, deși sistemele hibride pot introduce complexități electronice suplimentare.",
       "reliability_score": 75,
-      "title": "VW Golf Style1.5 TSI DSG PHEV",
+      "title": "VW Golf Style 1.5 TSI DSG PHEV",
       "year": 2025
     },
-    "fingerprint": "431125081bc5d2a46230425f13dd5ce053790a3deea33d0403133fe258e16e62"
+    "fingerprint": "1b522c158801e66c8ebdd269c622c88a13599a653c7b336c43ac9bab03b70cad"
   },
   "https://www.dasweltauto.ro/vehicle/1027200007": {
     "evaluation": {
