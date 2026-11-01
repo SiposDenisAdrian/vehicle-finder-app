@@ -1138,17 +1138,17 @@
   },
   "https://www.dasweltauto.ro/vehicle/1027200004": {
     "evaluation": {
-      "engine": "1.5 TSI",
+      "engine": "1.5 TSI PHEV",
       "matches": false,
       "mileage": 11400,
       "price": 33300,
-      "reason": "Prețul depășește limita maximă de 21.000 EUR stabilită prin criteriile obligatorii.",
-      "reliability_reason": "Combinația motor 1.5 TSI cu transmisia DSG este modernă și fiabilă, deși sistemele hibride pot introduce complexități electronice suplimentare.",
+      "reason": "Prețul de 33.300 EUR depășește limita maximă admisă de 21.000 EUR.",
+      "reliability_reason": "Motorizarea 1.5 TSI combinată cu sistemul PHEV și cutia DSG este destul de complexă, având o fiabilitate decentă dar care necesită mentenanță riguroasă.",
       "reliability_score": 75,
-      "title": "VW Golf Style 1.5 TSI DSG PHEV",
+      "title": "VW Golf Style1.5 TSI DSG PHEV",
       "year": 2025
     },
-    "fingerprint": "1b522c158801e66c8ebdd269c622c88a13599a653c7b336c43ac9bab03b70cad"
+    "fingerprint": "431125081bc5d2a46230425f13dd5ce053790a3deea33d0403133fe258e16e62"
   },
   "https://www.dasweltauto.ro/vehicle/1027200007": {
     "evaluation": {
