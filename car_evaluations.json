@@ -854,6 +854,20 @@
     },
     "fingerprint": "6ebd39f9abf725e61575d6b344a006693da0d4e9fb3f6393ba22cf38e101d79e"
   },
+  "https://www.dasweltauto.ro/vehicle/1021702136": {
+    "evaluation": {
+      "engine": "30 TDI",
+      "matches": false,
+      "mileage": 102472,
+      "price": 15500,
+      "reason": "Anunțul conține un motor diesel (TDI) și depășește limita de 90.000 km.",
+      "reliability_reason": "Motorul 2.0 TDI este fiabil, dar complexitatea sistemelor de emisii aduce costuri suplimentare de întreținere pe termen lung.",
+      "reliability_score": 70,
+      "title": "Audi A3 Sportback 30 TDI",
+      "year": 2022
+    },
+    "fingerprint": "72f0be5716e7a91b4913dc134f7ad057122a1f9915be934e6afad6b15e3db2d2"
+  },
   "https://www.dasweltauto.ro/vehicle/1021702226": {
     "evaluation": {
       "engine": "2.0 TDI",
