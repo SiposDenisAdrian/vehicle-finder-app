@@ -33,10 +33,10 @@ dacă Gemini răspunde cu HTTP 429, respectă timpul de așteptare indicat și
 reîncearcă. La HTTP 503 sau după epuizarea limitei principale, încearcă
 `gemini-3.5-flash-lite`.
 
-Workflow-ul din `.github/workflows/scraper.yml` rulează la fiecare 6 ore
-(00:00, 06:00, 12:00 și 18:00 UTC), în fiecare zi, și poate fi pornit manual
-din fila **Actions**. Orele sunt în UTC; România este de obicei UTC+2 iarna și
-UTC+3 vara. În **Settings → Actions → General**, permite workflow-urilor să
+Workflow-ul din `.github/workflows/scraper.yml` verifică anunțurile și trimite
+recomandările o dată pe săptămână, luni la ora 10:00 în România. Programarea
+ține cont de ora de vară/iarnă; workflow-ul poate fi pornit și manual din fila
+**Actions**. În **Settings → Actions → General**, permite workflow-urilor să
 scrie în repository pentru a salva evaluările actualizate. Protecția branch-ului
 poate bloca push-ul automat.
 La o eroare, scraperul se reîncearcă automat de cel mult 3 ori, cu pauze de

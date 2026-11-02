@@ -2,7 +2,8 @@ name: Car Scraper Cron
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 7 * * 1"
+    - cron: "0 8 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -13,7 +14,25 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Check weekly Romania schedule
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          elif [ "$(TZ=Europe/Bucharest date +'%u %H')" = "1 10" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          fi
+
   scrape:
+    needs: schedule
+    if: needs.schedule.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
