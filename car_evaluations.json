@@ -770,6 +770,20 @@
     },
     "fingerprint": "7fcd4ac58151320dbfa2126a43702711c32184c2e3ea449a5d97de117b274d5f"
   },
+  "https://www.dasweltauto.ro/vehicle/1021301827": {
+    "evaluation": {
+      "engine": "1.4 TSI Plug-in Hybrid",
+      "matches": false,
+      "mileage": 109247,
+      "price": 22700,
+      "reason": "Anunțul depășește bugetul de 21.000 EUR și pragul de 90.000 km, iar motorizarea hibridă nu a fost specificată ca opțiune acceptată.",
+      "reliability_reason": "Sistemele hibride complexe cresc riscul de defecte electrice și necesită mentenanță specializată comparativ cu variantele TSI standard.",
+      "reliability_score": 70,
+      "title": "VW Golf GTE",
+      "year": 2022
+    },
+    "fingerprint": "78079ee63e840477ce911468994e488b42f6d319033202f971560b4a4fa374d3"
+  },
   "https://www.dasweltauto.ro/vehicle/1021302023": {
     "evaluation": {
       "engine": "2.0 TDI",
@@ -923,6 +937,21 @@
       "year": 2022
     },
     "fingerprint": "0c6bf6091d8cdfa997aa7190d2ed3299ec69725941f8b2d9d8081dac471e46cb"
+  },
+  "https://www.dasweltauto.ro/vehicle/1021702362": {
+    "detail_fingerprint": "1019b496e86f3d362be90dbd1bd39f467d1fa84857a1be4566bd38d2682cda45",
+    "evaluation": {
+      "engine": "1.4 TSI",
+      "matches": false,
+      "mileage": 115366,
+      "price": 7500,
+      "reason": "Anunțul nu îndeplinește criteriile privind kilometrajul (depășește 90.000 km) și transmisia (este manuală, nu automată).",
+      "reliability_reason": "Motorul 1.4 TSI din această generație este rezonabil de fiabil, dar transmisia manuală pe acest model este lipsită de complexitatea DSG-ului, însă kilometrajul ridicat sugerează uzură potențială la ambreiaj și volanta cu masă dublă.",
+      "reliability_score": 75,
+      "title": "VW Golf Comfortline 1.4 TSI",
+      "year": 2017
+    },
+    "fingerprint": "d926265fd2ebdfe4823e84d822dcd6d43aede153772d877b60d1e2a84a879a28"
   },
   "https://www.dasweltauto.ro/vehicle/1022002043": {
     "evaluation": {
