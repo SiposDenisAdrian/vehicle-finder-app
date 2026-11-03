@@ -94,6 +94,62 @@ class RecommendationTests(unittest.TestCase):
             )
         )
 
+    def test_target_model_filter_includes_lexus_is_only_from_autovit(self):
+        listing = {
+            "title": "Lexus IS 300h Executive",
+            "url": "https://www.autovit.ro/autoturisme/anunt/lexus-is-ID123.html",
+        }
+
+        self.assertTrue(checker.is_target_model(listing))
+        self.assertFalse(
+            checker.is_target_model(
+                {
+                    **listing,
+                    "url": "https://example.test/lexus-is",
+                }
+            )
+        )
+        self.assertFalse(
+            checker.is_target_model(
+                {
+                    **listing,
+                    "title": "Lexus UX 250h",
+                }
+            )
+        )
+
+    def test_lexus_is_uses_requested_limits_without_engine_or_gearbox_requirement(self):
+        car = {
+            "title": "Lexus IS 300h",
+            "url": "https://www.autovit.ro/autoturisme/anunt/lexus-is-ID123.html",
+        }
+        criteria = checker.evaluation_criteria(car)
+
+        self.assertIn("sub 21.500 EUR", criteria)
+        self.assertIn("cel mult 100.000 km", criteria)
+        self.assertIn("Nu impune un anumit combustibil sau tip de transmisie", criteria)
+
+    def test_lexus_constraints_enforce_price_and_mileage_boundaries(self):
+        car = {
+            "title": "Lexus IS 300h",
+            "url": "https://www.autovit.ro/autoturisme/anunt/lexus-is-ID123.html",
+        }
+        evaluation = make_evaluation("Lexus IS 300h", 21_500, 100_000, 80)
+
+        result = checker.enforce_listing_constraints(car, evaluation)
+
+        self.assertFalse(result["matches"])
+        self.assertIn("21.500", result["reason"])
+
+        evaluation = make_evaluation("Lexus IS 300h", 21_499, 100_001, 80)
+        result = checker.enforce_listing_constraints(car, evaluation)
+
+        self.assertFalse(result["matches"])
+        self.assertIn("100.000", result["reason"])
+
+        evaluation = make_evaluation("Lexus IS 300h", 21_499, 100_000, 80)
+        self.assertTrue(checker.enforce_listing_constraints(car, evaluation)["matches"])
+
     def test_recommendation_score_weights_reliability_price_and_mileage(self):
         evaluation = make_evaluation("VW Golf", 10_500, 45_000, 80)
 
@@ -166,6 +222,54 @@ class RecommendationTests(unittest.TestCase):
                 [item["url"] for item in sent_recommendations[1]], expected_urls
             )
             self.assertEqual(len(json.loads(cache_path.read_text())), 4)
+
+    def test_main_reports_unavailable_source_and_keeps_other_sources(self):
+        car = {
+            "id": "https://www.dasweltauto.ro/vehicle/golf",
+            "url": "https://www.dasweltauto.ro/vehicle/golf",
+            "title": "VW Golf 1.5 TSI DSG",
+            "text": "Benzină, 40.000 km.",
+        }
+        source_urls = [
+            "https://www.dasweltauto.ro/s/vw",
+            "https://www.autovit.ro/autoturisme/lexus",
+        ]
+
+        def scrape(url, *_):
+            if "autovit.ro" in url:
+                raise RuntimeError("Pagina a răspuns cu HTTP 403")
+            return [car]
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = Path(temp_dir) / "car_evaluations.json"
+            sent_messages = []
+            with patch.object(checker, "CACHE_FILE", cache_path), patch.dict(
+                os.environ,
+                {
+                    "GEMINI_API_KEY": "test-key",
+                    "TELEGRAM_BOT_TOKEN": "test-token",
+                    "TELEGRAM_CHAT_ID": "test-chat",
+                },
+            ), patch.object(
+                checker, "get_listing_urls", return_value=source_urls
+            ), patch.object(
+                checker, "scrape_listings", side_effect=scrape
+            ), patch.object(
+                checker.genai, "Client", return_value=Mock()
+            ), patch.object(
+                checker,
+                "evaluate_with_ai",
+                return_value=make_evaluation(car["title"], 15_000, 40_000, 80),
+            ), patch.object(
+                checker,
+                "send_telegram_recommendations",
+                side_effect=lambda *args: sent_messages.append(args),
+            ):
+                checker.main()
+
+            self.assertEqual(len(sent_messages), 1)
+            self.assertEqual(len(sent_messages[0][0]), 1)
+            self.assertIn("HTTP 403", sent_messages[0][3][0])
 
     def test_main_fetches_details_for_cached_unknown_transmission(self):
         car = {

@@ -11,7 +11,7 @@ se schimbă detaliile anunțului.
 
 ### Configurare GitHub Actions
 
-Implicit, scriptul caută pe Compexit Auto Rulate și Das WeltAuto. Pentru alte
+Implicit, scriptul caută pe Compexit Auto Rulate, Das WeltAuto și Autovit. Pentru alte
 pagini ale acestor site-uri, în **Settings → Secrets and variables → Actions →
 Variables**, poți adăuga:
 
@@ -46,18 +46,24 @@ eșuată, ca să poată fi reutilizate.
 ### Surse și filtre
 
 Sursele implicite sunt Compexit Auto Rulate (`https://www.autorulate.ro/parc-auto/`),
-Das WeltAuto Volkswagen (`https://www.dasweltauto.ro/s/vw`) și Das WeltAuto Audi
-(`https://www.dasweltauto.ro/s/audi`). Scriptul folosește selectori specifici
-pentru linkurile anunțurilor și paginare, parcurge toate paginile și oprește
-execuția cu eroare explicită dacă o pagină nu poate fi accesată sau nu găsește
-anunțuri. Dacă este setat, `MAX_LISTINGS` se aplică separat fiecărei surse.
+Das WeltAuto Volkswagen (`https://www.dasweltauto.ro/s/vw`), Das WeltAuto Audi
+(`https://www.dasweltauto.ro/s/audi`) și Autovit Lexus
+(`https://www.autovit.ro/autoturisme/lexus`). Scriptul folosește selectori
+specifici pentru linkurile anunțurilor și paginare, parcurge toate paginile și
+oprește execuția cu eroare explicită dacă o pagină nu poate fi accesată sau nu
+găsește anunțuri. Dacă este setat, `MAX_LISTINGS` se aplică separat fiecărei surse.
+Dacă o sursă dă eroare (de exemplu HTTP 403), celelalte sunt procesate, iar
+mesajul Telegram include sursa care nu a putut fi verificată; scraperul nu
+încearcă să ocolească restricțiile site-ului.
 
-Filtrele sunt definite în promptul Gemini din `checker.py`: VW Golf (generația
-7.5 sau 8), VW T-Roc doar cu motorul 1.5 TSI pe benzină și Audi A3 (generația
-8V sau 8Y), cu cutie automată, sub 90.000 km și sub 21.000 EUR. Pentru T-Roc,
-alte motorizări, inclusiv 1.0 TSI și diesel, sunt respinse. Das WeltAuto caută
-separat în stocul Volkswagen și Audi; Compexit oferă stocul său de mașini rulate.
-Doar titlurile care conțin „Golf”, „T-Roc” sau „A3” sunt evaluate de Gemini.
+Filtrele sunt definite în `checker.py`: VW Golf (generația 7.5 sau 8), VW T-Roc
+doar cu motorul 1.5 TSI pe benzină și Audi A3 (generația 8V sau 8Y), cu cutie
+automată, sub 90.000 km și sub 21.000 EUR. Pentru T-Roc, alte motorizări,
+inclusiv 1.0 TSI și diesel, sunt respinse. Pentru Lexus IS de pe Autovit,
+prețul trebuie să fie sub 21.500 EUR, iar kilometrajul de cel mult 100.000 km;
+nu se impune o anumită motorizare sau transmisie. Das WeltAuto caută separat în
+stocul Volkswagen și Audi; Compexit oferă stocul său de mașini rulate. Doar
+titlurile relevante din fiecare sursă sunt evaluate de Gemini.
 Pentru anunțurile Das WeltAuto respinse doar fiindcă transmisia nu este clară în
 rezumat, scraperul deschide pagina individuală și reevaluează mașina cu
 specificațiile complete. Aceste verificări sunt păstrate în cache pentru a evita
@@ -86,7 +92,8 @@ playwright install chromium
 export LISTING_URLS="$(printf '%s\n' \
   'https://www.autorulate.ro/parc-auto/' \
   'https://www.dasweltauto.ro/s/vw' \
-  'https://www.dasweltauto.ro/s/audi')"
+  'https://www.dasweltauto.ro/s/audi' \
+  'https://www.autovit.ro/autoturisme/lexus')"
 export GEMINI_API_KEY="..."
 export TELEGRAM_BOT_TOKEN="..."
 export TELEGRAM_CHAT_ID="..."
